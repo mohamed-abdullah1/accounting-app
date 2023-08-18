@@ -19,7 +19,12 @@ function App() {
     });
   }, []);
   return (
-    <div className="border-[red] border-2">
+    <div
+      className=""
+      style={{
+        fontFamily: "poppins",
+      }}
+    >
       <div>
         <a href="https://vitejs.dev" target="_blank">
           {/* <img src={viteLogo} className="logo" alt="Vite logo" /> */}
