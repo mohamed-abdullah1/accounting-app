@@ -19,7 +19,7 @@ function App() {
     });
   }, []);
   return (
-    <div>
+    <div className="border-[red] border-2">
       <div>
         <a href="https://vitejs.dev" target="_blank">
           {/* <img src={viteLogo} className="logo" alt="Vite logo" /> */}
