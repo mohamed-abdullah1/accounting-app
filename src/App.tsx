@@ -19,12 +19,8 @@ function App() {
     });
   }, []);
   return (
-    <div
-      className=""
-      style={{
-        fontFamily: "poppins",
-      }}
-    >
+    <div className="font-[poppins]">
+      <p className="font-[cairo] font-bold">محمد السيد</p>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           {/* <img src={viteLogo} className="logo" alt="Vite logo" /> */}

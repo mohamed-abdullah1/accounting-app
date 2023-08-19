@@ -49,12 +49,11 @@ app.on("window-all-closed", () => {
 
 app.whenReady().then(createWindow);
 
-//backend
 //connection to the renderer process
 const { ipcMain } = require("electron");
 ipcMain.on("get_data", (event, arg) => {
   //listener
   const { productId } = arg;
   console.log("INSIDE MAIN PROCESS", productId);
-  event.sender.send("get_data", productId + 1);
+  event.sender.send("get_data", productId);
 });
