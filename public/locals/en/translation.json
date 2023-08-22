@@ -1,4 +1,8 @@
 {
   "main": "Main",
-  "sales": "Sales"
+  "sales": "Sales",
+  "purchases": "Purchases",
+  "stocks": "Stocks",
+  "Suppliers": "Suppliers",
+  "Clients": "Clients"
 }

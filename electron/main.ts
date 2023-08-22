@@ -57,3 +57,24 @@ ipcMain.on("get_data", (event, arg) => {
   console.log("INSIDE MAIN PROCESS", productId);
   event.sender.send("get_data", productId);
 });
+
+const express = require("express");
+const fetch = require("node-fetch");
+const appc = express();
+const port = 2000; // Choose a port for your proxy server
+const cors = require("cors");
+appc.use(function (req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+});
+appc.get("/api", async (req, res) => {
+  res.status(200).send({ s: "x" });
+});
+
+appc.use(cors());
+appc.listen(port, () => {
+  console.log(`Proxy server is running on port ${port}`);
+});

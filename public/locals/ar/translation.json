@@ -1,4 +1,8 @@
 {
   "main": "رئيسيه",
-  "sales": "مبيعات"
+  "sales": "مبيعات",
+  "purchases": "مشتريات",
+  "stocks": "مخازن",
+  "suppliers": "موردين",
+  "clients": "عملاء"
 }
