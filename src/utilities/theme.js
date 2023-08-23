@@ -163,30 +163,30 @@ export const themeSettings = (mode) => {
           }),
     },
     typography: {
-      fontFamily: ["cairo", "poppins"].join(","),
+      fontFamily: ["poppins", "cairo"].join(","),
       fontSize: 12,
       h1: {
-        fontFamily: ["cairo", "poppins"].join(","),
+        fontFamily: ["poppins", "cairo"].join(","),
         fontSize: 40,
       },
       h2: {
-        fontFamily: ["cairo", "poppins"].join(","),
+        fontFamily: ["poppins", "cairo"].join(","),
         fontSize: 32,
       },
       h3: {
-        fontFamily: ["cairo", "poppins"].join(","),
+        fontFamily: ["poppins", "cairo"].join(","),
         fontSize: 24,
       },
       h4: {
-        fontFamily: ["cairo", "poppins"].join(","),
+        fontFamily: ["poppins", "cairo"].join(","),
         fontSize: 20,
       },
       h5: {
-        fontFamily: ["cairo", "poppins"].join(","),
+        fontFamily: ["poppins", "cairo"].join(","),
         fontSize: 16,
       },
       h6: {
-        fontFamily: ["cairo", "poppins"].join(","),
+        fontFamily: ["poppins", "cairo"].join(","),
         fontSize: 14,
       },
     },
@@ -211,4 +211,5 @@ export const useMode = () => {
 
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
   return [theme, colorMode];
+  //colorMode contain the context , theme is the mui theme var
 };

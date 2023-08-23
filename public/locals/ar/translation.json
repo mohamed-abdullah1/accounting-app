@@ -1,8 +1,11 @@
 {
-  "main": "رئيسيه",
+  "dashboard": "رئيسيه",
   "sales": "مبيعات",
   "purchases": "مشتريات",
   "stocks": "مخازن",
   "suppliers": "موردين",
-  "clients": "عملاء"
+  "clients": "عملاء",
+  "search": "ابحث",
+  "dashboard_subtitle": "صفحة لعرض جميع الاحصائيات للشركة",
+  "sales_subtitle": "صفحة لعرض جميع عمليات البيع الى العملاء"
 }

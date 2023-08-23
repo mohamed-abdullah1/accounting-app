@@ -1,8 +1,11 @@
 {
-  "main": "Main",
+  "dashboard": "Dashboard",
   "sales": "Sales",
   "purchases": "Purchases",
   "stocks": "Stocks",
   "Suppliers": "Suppliers",
-  "Clients": "Clients"
+  "Clients": "Clients",
+  "search": "Search",
+  "dashboard_subtitle": "Page to view all the analysis of the Company",
+  "sales_subtitle": "Page to view all the sales operations to the customers"
 }

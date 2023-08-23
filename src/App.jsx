@@ -5,6 +5,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./utilities/theme";
 import TopBar from "./features/TopBar";
 import SideBar from "./features/SideBar";
+import options from "./utilities/options";
 
 function App() {
   const { t } = useTranslation();
@@ -52,9 +53,17 @@ function App() {
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <TopBar />
-          <SideBar />
-          <Routes></Routes>
+          <div className="app">
+            <SideBar />
+            <div className="content">
+              <TopBar />
+              <Routes>
+                {options?.map(({ id, component, path }) => (
+                  <Route key={id} path={path} element={component} />
+                ))}
+              </Routes>
+            </div>
+          </div>
         </ThemeProvider>
       </ColorModeContext.Provider>
     </>
