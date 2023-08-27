@@ -1,24 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
-import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
-import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
-import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import { tokens } from "../utilities/theme";
 import options from "../utilities/options";
 import { useTranslation } from "react-i18next";
-const Item = ({ title, to, icon, selected, setSelected }) => {
+const Item = ({ title, to, icon, selected, setSelected, lang }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
@@ -30,7 +19,15 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
       onClick={() => setSelected(title)}
       icon={icon}
     >
-      <Typography variant="h5">{title}</Typography>
+      <Typography
+        variant="h5"
+        sx={{
+          direction: "ltr",
+          // width: lang === "ar" ? "30%" : "100%"
+        }}
+      >
+        {title}
+      </Typography>
       <Link to={to} />
     </MenuItem>
   );
@@ -41,18 +38,28 @@ const Sidebar = () => {
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [lang, setLang] = useState(i18n.language);
+  useEffect(() => {
+    setLang(i18n.language);
+  }, [i18n.language]);
   return (
     <Box
       sx={{
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
         },
+        "& .pro-item-content": {
+          direction: `rtl !important`,
+        },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
         },
         "& .pro-inner-item": {
-          padding: "5px 35px 5px 20px !important",
+          padding:
+            lang === "en"
+              ? "5px 35px 5px 20px !important"
+              : "5px 20px 5px 35px !important",
         },
         "& .pro-inner-item:hover": {
           color: "#868dfb !important",
@@ -81,7 +88,7 @@ const Sidebar = () => {
                 ml="15px"
               >
                 <Typography variant="h3" color={colors.grey[100]}>
-                  Accounting
+                  {t("accounting")}
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -90,7 +97,15 @@ const Sidebar = () => {
             )}
           </MenuItem>
 
-          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+          <Box
+            padding={
+              isCollapsed
+                ? undefined
+                : lang === "en"
+                ? "0 0 0 10%"
+                : "0 0 10% 0"
+            }
+          >
             {/* <Item
               title={t("dashboard")}
               to="/"
@@ -201,6 +216,7 @@ const Sidebar = () => {
                 selected={selected}
                 setSelected={setSelected}
                 icon={icon}
+                lang={lang}
               />
             ))}
           </Box>

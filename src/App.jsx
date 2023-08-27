@@ -58,9 +58,34 @@ function App() {
             <div className="content">
               <TopBar />
               <Routes>
-                {options?.map(({ id, component, path }) => (
-                  <Route key={id} path={path} element={component} />
-                ))}
+                {options?.map(({ id, component, path, children }) =>
+                  children ? (
+                    <Route key={id} path={path} element={component}>
+                      {children.map(
+                        ({
+                          id: idChild,
+                          component: componentChild,
+                          path: pathChild,
+                        }) =>
+                          pathChild.indexOf("table") !== -1 ? (
+                            <Route
+                              index
+                              key={idChild}
+                              element={componentChild}
+                            />
+                          ) : (
+                            <Route
+                              key={idChild}
+                              path={pathChild}
+                              element={componentChild}
+                            />
+                          )
+                      )}
+                    </Route>
+                  ) : (
+                    <Route key={id} path={path} element={component} />
+                  )
+                )}
               </Routes>
             </div>
           </div>

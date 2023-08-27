@@ -143,6 +143,9 @@ export const themeSettings = (mode) => {
             background: {
               default: colors.primary[500],
             },
+            success: {
+              main: "#fff", // Replace with your custom color
+            },
           }
         : {
             // palette values for light mode
@@ -159,6 +162,9 @@ export const themeSettings = (mode) => {
             },
             background: {
               default: "#fcfcfc",
+            },
+            success: {
+              main: "#000000", // Replace with your custom color
             },
           }),
     },

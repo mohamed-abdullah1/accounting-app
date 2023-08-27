@@ -16,8 +16,8 @@ i18n
     backend: {
       loadPath: "/locals/{{lng}}/{{ns}}.json", // Path pattern for translation files
     },
-    lng: "en", // default language
-    fallbackLng: "en", // fallback language
+    lng: "ar", // default language
+    fallbackLng: "ar", // fallback language
     interpolation: {
       escapeValue: false, // react already escapes by default
     },

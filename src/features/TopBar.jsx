@@ -3,12 +3,12 @@ import React, { useContext } from "react";
 import { ColorModeContext, tokens } from "../utilities/theme";
 import { LightModeOutlined, SearchOutlined } from "@mui/icons-material";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+
 import { useTranslation } from "react-i18next";
 import arImg from "../assets/locals/ar.png";
 import enImg from "../assets/locals/en.png";
+import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 const TopBar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -18,15 +18,22 @@ const TopBar = () => {
   //helpers
   const handleLanguageChange = () => {
     i18n.changeLanguage(i18n.language === "en" ? "ar" : "en");
+    if (i18n.language === "en") {
+      document.documentElement.classList.add("ltr");
+    } else {
+      document.documentElement.classList.remove("ltr");
+    }
   };
   return (
     <Box display="flex" justifyContent="space-between" p={2}>
       {/* SEARCH CONTAINER */}
-      <Box bgcolor={colors.primary[400]} borderRadius={2}>
-        <InputBase sx={{ ml: 2, flex: 1 }} placeholder={t("search")} />
-        <IconButton type="button" sx={{ p: 1 }}>
-          <SearchOutlined />
-        </IconButton>
+      <Box display="flex">
+        <Box bgcolor={colors.primary[400]} borderRadius={2}>
+          <InputBase sx={{ ml: 2, mr: 2, flex: 1 }} placeholder={t("search")} />
+          <IconButton type="button" sx={{ p: 1 }}>
+            <SearchOutlined />
+          </IconButton>
+        </Box>
       </Box>
       {/* ICONS */}
       <Box display="flex">
@@ -47,12 +54,6 @@ const TopBar = () => {
             />
           </Box>
         </IconButton>
-        {/* <IconButton type="button">
-          <AccountCircleOutlinedIcon />
-        </IconButton>
-        <IconButton type="button">
-          <SettingsOutlinedIcon />
-        </IconButton> */}
       </Box>
     </Box>
   );
