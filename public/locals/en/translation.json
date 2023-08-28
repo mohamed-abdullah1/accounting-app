@@ -10,5 +10,6 @@
   "dashboard_subtitle": "Page to view all the analysis of the Company",
   "sales_subtitle": "Page to view all the sales operations to the customers",
   "add": "Add",
-  "add_new_sales": "Add new sales operation"
+  "add_new_sales": "Add new sales operation",
+  "cancel": "Cancel"
 }

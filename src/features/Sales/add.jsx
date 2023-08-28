@@ -3,8 +3,8 @@ import { Formik } from "formik";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
-import Btn from "../../components/Button";
-
+import FormButtons from "../../components/FormButtons";
+import "./style.css";
 const SalesAdd = () => {
   const { t } = useTranslation();
   const schema = yup.object().shape({
@@ -66,6 +66,7 @@ const SalesAdd = () => {
                 error={!!touched.name && !!errors.name}
                 helperText={touched.name && errors.name}
                 color="success"
+                sx={{}}
               />
               <TextField
                 type="number"
@@ -116,15 +117,7 @@ const SalesAdd = () => {
                 color="success"
               />
             </Box>
-            <Box p={2} display="flex" justifyContent="center">
-              <Btn
-                loading={false}
-                style={{ fontSize: 18 }}
-                type="submit"
-                title="add"
-                onClick={() => {}}
-              />
-            </Box>
+            <FormButtons />
           </form>
         )}
       </Formik>

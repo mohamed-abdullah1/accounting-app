@@ -146,6 +146,9 @@ export const themeSettings = (mode) => {
             success: {
               main: "#fff", // Replace with your custom color
             },
+            cancelBtn: {
+              main: colors.greenAccent[400], // Replace with your custom color
+            },
           }
         : {
             // palette values for light mode
@@ -165,6 +168,9 @@ export const themeSettings = (mode) => {
             },
             success: {
               main: "#000000", // Replace with your custom color
+            },
+            cancelBtn: {
+              main: colors.greenAccent[400], // Replace with your custom color
             },
           }),
     },
