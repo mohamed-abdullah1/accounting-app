@@ -1,8 +1,6 @@
-import { contextBridge, ipcRenderer } from "electron";
+const { contextBridge, ipcRenderer } = require("electron");
 
-function domReady(
-  condition: DocumentReadyState[] = ["complete", "interactive"]
-) {
+function domReady(condition = ["complete", "interactive"]) {
   return new Promise((resolve) => {
     if (condition.includes(document.readyState)) {
       resolve(true);
@@ -17,24 +15,18 @@ function domReady(
 }
 
 const safeDOM = {
-  append(parent: HTMLElement, child: HTMLElement) {
+  append(parent, child) {
     if (!Array.from(parent.children).find((e) => e === child)) {
       parent.appendChild(child);
     }
   },
-  remove(parent: HTMLElement, child: HTMLElement) {
+  remove(parent, child) {
     if (Array.from(parent.children).find((e) => e === child)) {
       parent.removeChild(child);
     }
   },
 };
 
-/**
- * https://tobiasahlin.com/spinkit
- * https://connoratherton.com/loaders
- * https://projects.lukehaas.me/css-loaders
- * https://matejkustec.github.io/SpinThatShit
- */
 function useLoading() {
   const className = `loaders-css__square-spin`;
   const styleContent = `
@@ -83,8 +75,6 @@ function useLoading() {
     },
   };
 }
-
-// ----------------------------------------------------------------------
 
 const { appendLoading, removeLoading } = useLoading();
 domReady().then(appendLoading);

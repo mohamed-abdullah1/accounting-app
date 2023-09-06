@@ -1,5 +1,7 @@
-import { app, BrowserWindow } from "electron";
-import path from "node:path";
+const { app, BrowserWindow } = require("electron");
+const path = require("node:path");
+const server = require("../Backend/server.js");
+const db = require("../Backend/config/database.js");
 
 // The built directory structure
 //
@@ -15,7 +17,7 @@ process.env.PUBLIC = app.isPackaged
   ? process.env.DIST
   : path.join(process.env.DIST, "../public");
 
-let win: BrowserWindow | null;
+let win = null;
 // 🚧 Use ['ENV_NAME'] avoid vite:define plugin - Vite@2.x
 const VITE_DEV_SERVER_URL = process.env["VITE_DEV_SERVER_URL"];
 
@@ -47,7 +49,11 @@ app.on("window-all-closed", () => {
   win = null;
 });
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+  db;
+  server;
+  createWindow();
+});
 
 //backend
 //connection to the renderer process

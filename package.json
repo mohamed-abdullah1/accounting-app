@@ -11,10 +11,16 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "antd": "^5.8.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "morgan": "^1.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.2",
-    "react-router-dom": "^6.15.0"
+    "react-router-dom": "^6.15.0",
+    "sequelize": "^6.32.1",
+    "sqlite3": "^5.1.6"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
@@ -25,7 +31,7 @@
     "autoprefixer": "^10.4.15",
     "browserslist": "^4.21.10",
     "electron": "^24.4.0",
-    "electron-builder": "^23.6.0",
+    "electron-builder": "^24.6.3",
     "esbuild": "^0.19.2",
     "eslint": "^8.38.0",
     "eslint-plugin-react-hooks": "^4.6.0",
